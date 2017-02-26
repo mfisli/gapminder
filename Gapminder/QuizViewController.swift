@@ -8,7 +8,8 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController
+{
     // "Where do people live is missing
     // because this question presented as a image map
     // and will need to be implemented later.
@@ -19,7 +20,7 @@ class QuizViewController: UIViewController {
         "What is the proportion of all one-year-old children in the world that have got the measels vaccine?",
         "During the last 20 years the porportion of the world's population that are desperately poor has:"
     ]
-    // first in each inner array item is correct
+    // first item in each inner array is correct
     let answers = [
         // children
         ["2 billion ", "3 billion", "4 billion"],
@@ -31,14 +32,17 @@ class QuizViewController: UIViewController {
         ["8/10", "5/10", "2/10"],
         // poor
         ["Halved", "Remained the same", "Doubled"]
-
     ]
+    // keeps results of user's answers
+    var results = [[String]]()
     // current question
     var currentQuestion = 0
     // right answer
     var correctAnswerIndex:UInt32 = 0
+    // results index
+    var resultsIndex = 0
     
-    // MARK:TODO question label is too small for questions
+    // consider using textKit instead
     @IBOutlet weak var questionLabel: UILabel!
 
     override func viewDidLoad()
@@ -47,7 +51,8 @@ class QuizViewController: UIViewController {
         getQuestion()
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -56,39 +61,53 @@ class QuizViewController: UIViewController {
     {
         if (sender.tag) == Int(correctAnswerIndex)
         {
-            print("right")
-            //points += 1
+            print("right for question \(currentQuestion)")
+            results[resultsIndex][2] = sender.currentTitle!
+            print("___________________")
+            dump(results)
         }
         else
         {
-            print("wrong")
+            print("wrong for question \(currentQuestion)")
+            results[resultsIndex][2] = sender.currentTitle!
+            print("___________________")
+            dump(results)
         }
         if (currentQuestion != questions.count)
         {
+            resultsIndex+=1
             getQuestion()
         }
         else
         {
             print("no more questions")
-            //performSegue(withIdentifier: "showScore", sender: self)
+            //MARK: TODO pass results array to results view controller
+            //performSegue(withIdentifier: "make a new one first", sender: self)
         }
-
     }
+    
     func getQuestion()
     {
         // set the question label to the current question
         questionLabel.text = questions[currentQuestion]
+        // get location of correct answer
         correctAnswerIndex = arc4random_uniform(3) + 1
         // create a button variable
         var button:UIButton = UIButton()
         // holds the button being set
         var currentButton = 1
+        
+        // question, right answer, user guess
+        var newRow = [String]()
+        newRow.append(questions[currentQuestion])
+        
         // assign the button to each storyboard button
         for i in 1...3
         {
             button = view.viewWithTag(i) as! UIButton
             if(i == Int(correctAnswerIndex)){
                 button.setTitle(answers[currentQuestion][0], for: .normal)
+                newRow.append(answers[currentQuestion][0])
             }
             else
             {
@@ -96,9 +115,11 @@ class QuizViewController: UIViewController {
                 currentButton += 1
             }
         }
+        newRow.append("User Guess Placeholder")
+        results.append(newRow)
         currentQuestion += 1
-        
-        
+        print("__getQuestion()__")
+        dump(results)
     }
 
     /*
