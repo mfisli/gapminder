@@ -82,7 +82,7 @@ class QuizViewController: UIViewController
         {
             print("no more questions")
             //MARK: TODO pass results array to results view controller
-            //performSegue(withIdentifier: "make a new one first", sender: self)
+            performSegue(withIdentifier: "quizToResultSegue", sender: self)
         }
     }
     
@@ -122,6 +122,12 @@ class QuizViewController: UIViewController
         dump(results)
     }
 
+    @IBAction func homeAction(_ sender: Any) {
+        performSegue(withIdentifier: "homeSegue", sender: self)
+    }
+    @IBAction func resultAction(_ sender: Any) {
+               performSegue(withIdentifier: "quizToResultSegue", sender: self)
+    }
     /*
     // MARK: - Navigation
 

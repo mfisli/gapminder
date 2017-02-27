@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490474A41E63CF670022AED3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490474A31E63CF670022AED3 /* ResultViewController.swift */; };
 		49CADD781E57CF920067AD10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CADD771E57CF920067AD10 /* AppDelegate.swift */; };
 		49CADD7A1E57CF920067AD10 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CADD791E57CF920067AD10 /* HomeViewController.swift */; };
 		49CADD7D1E57CF920067AD10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CADD7B1E57CF920067AD10 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490474A31E63CF670022AED3 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		49CADD741E57CF920067AD10 /* Gapminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gapminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CADD771E57CF920067AD10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49CADD791E57CF920067AD10 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				49CADD771E57CF920067AD10 /* AppDelegate.swift */,
 				49CADD791E57CF920067AD10 /* HomeViewController.swift */,
 				49CADD891E57D9610067AD10 /* QuizViewController.swift */,
+				490474A31E63CF670022AED3 /* ResultViewController.swift */,
 				49CADD7B1E57CF920067AD10 /* Main.storyboard */,
 				49CADD7E1E57CF920067AD10 /* Assets.xcassets */,
 				49CADD801E57CF920067AD10 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 				49CADD8A1E57D9610067AD10 /* QuizViewController.swift in Sources */,
 				49CADD7A1E57CF920067AD10 /* HomeViewController.swift in Sources */,
 				49CADD781E57CF920067AD10 /* AppDelegate.swift in Sources */,
+				490474A41E63CF670022AED3 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				49CADD881E57CF920067AD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
