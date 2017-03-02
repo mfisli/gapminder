@@ -8,16 +8,56 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
-
-    override func viewDidLoad() {
+class ResultViewController: UIViewController
+{
+    var results = [[String]]()
+    
+    var resultsIndex = 0;
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+//        if(results.count != 0){
+//            print(results)
+//        } else {
+//            print("no results")
+//        }
+        getResult()
         
     }
 
-    override func didReceiveMemoryWarning() {
+    @IBAction func nextResultAction(_ sender: Any)
+    {
+       getResult()
+        
+    }
+    
+    func getResult(){
+        if (resultsIndex != results.count){
+            var isCorrect = ""
+            if (results[resultsIndex][1] == results[resultsIndex][2]){
+                isCorrect = "Well done."
+            } else {
+                isCorrect = "You got it wrong."
+            }
+            resultLabel.text =
+                "Question #\(resultsIndex+1)\n" +
+                "\(results[resultsIndex][0])\n\n" +
+                isCorrect + "\n" +
+                "Correct Answer: \(results[resultsIndex][1]) \n" +
+                "Your Answer: \(results[resultsIndex][2])"
+            resultsIndex += 1
+        } else {
+            performSegue(withIdentifier: "resultToHomeSegue", sender: self)
+        }
+
+    }
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

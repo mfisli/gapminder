@@ -10,6 +10,7 @@ import UIKit
 
 class QuizViewController: UIViewController
 {
+    //MARK: TODO Remove "skip" button
     // "Where do people live is missing
     // because this question presented as a image map
     // and will need to be implemented later.
@@ -81,7 +82,6 @@ class QuizViewController: UIViewController
         else
         {
             print("no more questions")
-            //MARK: TODO pass results array to results view controller
             performSegue(withIdentifier: "quizToResultSegue", sender: self)
         }
     }
@@ -89,7 +89,8 @@ class QuizViewController: UIViewController
     func getQuestion()
     {
         // set the question label to the current question
-        questionLabel.text = questions[currentQuestion]
+        questionLabel.text = "Question #\(currentQuestion+1)\n" +
+            questions[currentQuestion]
         // get location of correct answer
         correctAnswerIndex = arc4random_uniform(3) + 1
         // create a button variable
@@ -115,11 +116,11 @@ class QuizViewController: UIViewController
                 currentButton += 1
             }
         }
-        newRow.append("User Guess Placeholder")
+        newRow.append("No Answer")
         results.append(newRow)
         currentQuestion += 1
         print("__getQuestion()__")
-        dump(results)
+        //dump(results)
     }
 
     @IBAction func homeAction(_ sender: Any) {
@@ -128,6 +129,17 @@ class QuizViewController: UIViewController
     @IBAction func resultAction(_ sender: Any) {
                performSegue(withIdentifier: "quizToResultSegue", sender: self)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //MARK: TODO crashes if home button is pressed. Need to specify which segue.
+            let destinationVC = segue.destination as! ResultViewController
+            destinationVC.results = results
+        }
+//        let nextScene =  segue.destination as! ResultViewController
+//        if(segue.identifier == "quizToResultSegue") {
+//            
+//            nextScene.value = results
+//        }
+//    }
     /*
     // MARK: - Navigation
 
@@ -139,3 +151,20 @@ class QuizViewController: UIViewController
     */
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
