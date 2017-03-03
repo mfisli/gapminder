@@ -45,11 +45,15 @@ class QuizViewController: UIViewController
     
     // consider using textKit instead
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         getQuestion()
+        self.homeButton.isHidden = true
+        self.skipButton.isHidden = true
     }
 
     override func didReceiveMemoryWarning()
